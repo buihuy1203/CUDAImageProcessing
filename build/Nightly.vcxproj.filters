@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\CMakeFiles\d83ca3f32747932f4c75e797224a86cc\Nightly.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="E:\Bai Tap\Lap trinh song song\CUDAProcessing\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\CMakeFiles\Nightly" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{8871258E-6EF0-3ED4-B22F-0D699CB8B7B7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,6 +1,6 @@
 #ifndef SATURATION_H
 #define SATURATION_H
 
-void ParallelSatCUDA(uchar *input,uchar *output,int rows, int cols, float blur_sar);
+void ParallelSatCUDA(unsigned char *input,unsigned char *output,int rows, int cols, float blur_sar);
 
 #endif

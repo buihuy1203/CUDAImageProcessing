@@ -1,16 +1,8 @@
-#include <cuda_runtime.h>
-#include <opencv2/opencv.hpp>
-#include <iostream>
-#include <vector>
-
-using namespace cv;
-using namespace std;
-
-__device__ int clamp(int value, int low, int high) {
+static __device__ int clamp(int value, int low, int high) {
     return fmaxf(low, fminf(value, high));
 }
 
-__global__ void satKernel(const uchar *input, uchar *output, int rows, int cols, float set_sar) {
+__global__ void satKernel(const unsigned char *input, unsigned char *output, int rows, int cols, float set_sar) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
 
@@ -35,7 +27,7 @@ __global__ void satKernel(const uchar *input, uchar *output, int rows, int cols,
         if (delta == 0)
             hue = 0; // Undefined hue khi delta = 0
         else if(max_channel == red)
-            hue = 60*(float)(fmod(((green-blue)/delta),6));
+            hue = 60*(float)(fmodf(((green-blue)/delta),6));
         else if(max_channel == green)
             hue = 60*((blue-green)/delta + 2);
         else if(max_channel == blue)
@@ -44,7 +36,7 @@ __global__ void satKernel(const uchar *input, uchar *output, int rows, int cols,
             float new_sar = max(0.0f, min(1.0f, set_sar));
 
             float chroma = (1-fabs(2*light-1))*new_sar;
-            float temp = chroma*(1-fabs((float)(fmod((hue/60),2))-1));
+            float temp = chroma*(1-fabs((float)(fmodf((hue/60),2))-1));
             float mem = light-chroma/2;
 
             float res_red =0.0f, res_green = 0.0f, res_blue = 0.0f;
@@ -73,17 +65,17 @@ __global__ void satKernel(const uchar *input, uchar *output, int rows, int cols,
                 res_green=0;
                 res_blue = temp;
             }
-        output[idx]= (uchar)clamp(round((res_blue + mem) * 255), 0.0f, 255.0f);
-        output[idx+1]= (uchar)clamp(round((res_green + mem) * 255), 0.0f, 255.0f);
-        output[idx+2]= (uchar)clamp(round((res_red + mem) * 255), 0.0f, 255.0f);
+        output[idx]= (unsigned char)clamp(round((res_blue + mem) * 255), 0.0f, 255.0f);
+        output[idx+1]= (unsigned char)clamp(round((res_green + mem) * 255), 0.0f, 255.0f);
+        output[idx+2]= (unsigned char)clamp(round((res_red + mem) * 255), 0.0f, 255.0f);
     }
 }
 
-void ParallelSatCUDA(uchar *input, uchar *output, int rows, int cols, float set_sar){ 
+void ParallelSatCUDA(unsigned char *input, unsigned char *output, int rows, int cols, float set_sar){ 
 
     // Input and output data
-    size_t dataSize = rows * cols * 3 * sizeof(uchar);
-    uchar *d_input, *d_output;
+    size_t dataSize = rows * cols * 3 * sizeof(unsigned char);
+    unsigned char *d_input, *d_output;
 
     // Allocate device memory
     cudaMalloc(&d_input, dataSize);
@@ -104,7 +96,6 @@ void ParallelSatCUDA(uchar *input, uchar *output, int rows, int cols, float set_
     cudaDeviceSynchronize();
 
     // Copy output data back to host
-    Mat result(input.size(), CV_8UC3);
     cudaMemcpy(output, d_output, dataSize, cudaMemcpyDeviceToHost);
 
     // Free device memory

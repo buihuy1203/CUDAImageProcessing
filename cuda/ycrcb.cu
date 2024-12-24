@@ -1,18 +1,18 @@
-__global__ void yCrCBKernel(const uchar *input, uchar *output, int rows, int cols) {
+__global__ void yCrCBKernel(const unsigned char *input, unsigned char *output, int rows, int cols) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
 
     if (y < rows && x < cols) {
         int idx = (y * cols + x) * 3;
         // Input Value
-        uchar blue = input[idx];
-        uchar green = input[idx + 1];
-        uchar red = input[idx + 2];
+        unsigned char blue = input[idx];
+        unsigned char green = input[idx + 1];
+        unsigned char red = input[idx + 2];
 
         // RGB to YCrCB
-        uchar Y = (uchar)(0.299f * red + 0.587f * green + 0.114f * blue);
-        uchar Cb = (uchar)(128.0f + (blue - Y) * 0.564f);
-        uchar Cr = (uchar)(128.0f + (red - Y) * 0.713f);
+        unsigned char Y = (unsigned char)(0.299f * red + 0.587f * green + 0.114f * blue);
+        unsigned char Cb = (unsigned char)(128.0f + (blue - Y) * 0.564f);
+        unsigned char Cr = (unsigned char)(128.0f + (red - Y) * 0.713f);
 
         // Output Value
         output[idx]     = Y;
@@ -21,11 +21,11 @@ __global__ void yCrCBKernel(const uchar *input, uchar *output, int rows, int col
     }
 }
 
-void ParallelYCrCBCUDA(uchar *input, uchar *output, int rows, int cols) {
+void ParallelYCrCBCUDA(unsigned char *input, unsigned char *output, int rows, int cols) {
 
     // Input and output data
-    size_t dataSize = rows * cols * 3 * sizeof(uchar);
-    uchar *d_input, *d_output;
+    size_t dataSize = rows * cols * 3 * sizeof(unsigned char);
+    unsigned char *d_input, *d_output;
 
     // Allocate device memory
     cudaMalloc(&d_input, dataSize);

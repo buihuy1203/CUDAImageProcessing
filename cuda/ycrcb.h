@@ -1,6 +1,6 @@
-#ifndef SHARPNESS_H
-#define SHARPNESS_H
+#ifndef YCRCB_H
+#define YCRCB_H
 
-void ParallelYCrCBCUDA(uchar *input, uchar *output, int rows, int cols);
+void ParallelYCrCBCUDA(unsigned char *input, unsigned char *output, int rows, int cols);
 
 #endif

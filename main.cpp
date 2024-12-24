@@ -14,7 +14,7 @@ int main() {
     Mat image1 = imread("meo_xe_tang (26).jpg", IMREAD_COLOR);
     if (image1.empty()) {
             cout << "Can't read image" << endl;
-            break;
+            return -1;
         }
     imshow("Original", image1);
     int rows = image1.rows;
@@ -26,7 +26,7 @@ int main() {
     Mat BrightIm(image1.size(), CV_8UC3);
     Mat BlurIm(image1.size(), CV_8UC3);
     Mat grayImage;
-    cvtColor(input, grayImage, COLOR_BGR2GRAY);
+    cvtColor(image1, grayImage, COLOR_BGR2GRAY);
 
     vector<uchar> inputColor(rows * cols * 3);
     vector<uchar> inputGray(rows * cols);

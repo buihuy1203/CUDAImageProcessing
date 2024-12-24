@@ -8,7 +8,7 @@ set(CMAKE_CUDA_STANDARD 14)
 set(CMAKE_CUDA_STANDARD_REQUIRED ON)
 
 set(SOURCES
-    main.cu
+    main.cpp
     cuda/blur.cu
     cuda/brightness.cu
     cuda/saturation.cu

@@ -1,9 +1,9 @@
-
-__device__ int clamp(int value, int low, int high) {
+#define M_PI 3.14159
+static __device__ int clamp(int value, int low, int high) {
     return fmaxf(low, fminf(value, high));
 }
 
-__global__ void blurKernel(const uchar *input, uchar *output,const float *kernel1D  int rows, int cols, int kernelSize) {
+__global__ void blurKernel(const unsigned char *input, unsigned char *output,const float *kernel1D,  int rows, int cols, int kernelSize) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
 
@@ -17,7 +17,7 @@ __global__ void blurKernel(const uchar *input, uchar *output,const float *kernel
                 int px = clamp(x + kx, 0, rows - 1);
                 int py = clamp(y + ky, 0, cols - 1);
 
-                int pixelIndex = (px * cols + py) * channels;
+                int pixelIndex = px * cols + py;
                 float weight = kernel1D[(kx + halfSize) * kernelSize + (ky + halfSize)];
 
                 sum[0] += (float)input[pixelIndex] * weight;       // Blue channel
@@ -26,10 +26,10 @@ __global__ void blurKernel(const uchar *input, uchar *output,const float *kernel
             }
         }
 
-        int outputIndex = (x * cols + y) * channels;
-        output[outputIndex] = (uchar)clamp(sum[0], 0.0f, 255.0f);
-        output[outputIndex + 1] = (uchar)clamp(sum[1], 0.0f, 255.0f);
-        output[outputIndex + 2] = (uchar)clamp(sum[2], 0.0f, 255.0f);
+        int outputIndex = x * cols + y;
+        output[outputIndex] = (unsigned char)clamp(sum[0], 0.0f, 255.0f);
+        output[outputIndex + 1] = (unsigned char)clamp(sum[1], 0.0f, 255.0f);
+        output[outputIndex + 2] = (unsigned char)clamp(sum[2], 0.0f, 255.0f);
     }
 }
 
@@ -55,12 +55,12 @@ float* createGaussianKernel(int size, float sigma) {
     return kernel; // Trả về con trỏ mảng
 }
 
-void ParallelBlurCUDA(uchar *input,uchar *output,int rows, int cols, float blur_sar) {
+void ParallelBlurCUDA(unsigned char *input,unsigned char *output,int rows, int cols, float blur_sar) {
     // Gaussian kernel
     int kernelSize = 7;
     // Input and output data
-    size_t dataSize = rows * cols * 3 * sizeof(uchar);
-    uchar *d_input, *d_output;
+    size_t dataSize = rows * cols * 3 * sizeof(unsigned char);
+    unsigned char *d_input, *d_output;
     float *d_kernel;
     float *kernel1D = createGaussianKernel(kernelSize, blur_sar);
     // Allocate device memory

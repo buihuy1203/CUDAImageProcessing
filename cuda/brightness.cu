@@ -1,25 +1,25 @@
 
-__device__ int clamp(int value, int low, int high) {
+static __device__ int clamp(int value, int low, int high) {
     return fmaxf(low, fminf(value, high));
 }
 
-__global__ void brightnessKernel(const uchar *input, uchar *output, int rows, int cols, int bright) {
+__global__ void brightnessKernel(const unsigned char *input, unsigned char *output, int rows, int cols, int bright) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
 
     if (y < rows && x < cols) {
         int idx = (y * cols + x) * 3;
-        output[idx]= (uchar)clamp(input[idx]+(float)bright,0.0f,255.0f); // Blue
-        output[idx + 1] = (uchar)clamp(input[idx+1]+(float)bright,0.0f,255.0f); // Green
-        output[idx + 2] = (uchar)clamp(input[idx+2]+(float)bright,0.0f,255.0f); // Red
+        output[idx]= (unsigned char)clamp(input[idx]+(float)bright,0.0f,255.0f); // Blue
+        output[idx + 1] = (unsigned char)clamp(input[idx+1]+(float)bright,0.0f,255.0f); // Green
+        output[idx + 2] = (unsigned char)clamp(input[idx+2]+(float)bright,0.0f,255.0f); // Red
     }
 }
 
-void ParallelBrightnessCUDA(uchar *input,uchar *output, int rows, int cols, int bright) {
+void ParallelBrightnessCUDA(unsigned char *input,unsigned char *output, int rows, int cols, int bright) {
 
     // Input and output data
-    size_t dataSize = rows * cols * 3 * sizeof(uchar);
-    uchar *d_input, *d_output;
+    size_t dataSize = rows * cols * 3 * sizeof(unsigned char);
+    unsigned char *d_input, *d_output;
 
     // Allocate device memory
     cudaMalloc(&d_input, dataSize);
