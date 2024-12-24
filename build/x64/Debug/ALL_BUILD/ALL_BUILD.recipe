@@ -2,13 +2,13 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\Debug\CUDAProcessing.exe</FullPath>
+      <FullPath>C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build\Debug\CUDAProcessing.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\x64\Debug\ALL_BUILD</FullPath>
+      <FullPath>C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build\x64\Debug\ALL_BUILD</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

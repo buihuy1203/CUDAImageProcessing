@@ -1,6 +1,6 @@
-^E:\BAI TAP\LAP TRINH SONG SONG\CUDAPROCESSING\CMAKELISTS.TXT
+^C:\USERS\HUY_MB\DOCUMENTS\CODE\IMAGEPROCESSING\CUDAPROCESSING\CUDAIMAGEPROCESSING\CMAKELISTS.TXT
 setlocal
-C:\Strawberry\c\bin\cmake.exe "-SE:/Bai Tap/Lap trinh song song/CUDAProcessing" "-BE:/Bai Tap/Lap trinh song song/CUDAProcessing/build" --check-stamp-file "E:/Bai Tap/Lap trinh song song/CUDAProcessing/build/CMakeFiles/generate.stamp"
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing -BC:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing/build --check-stamp-file C:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

@@ -71,7 +71,7 @@ __global__ void satKernel(const unsigned char *input, unsigned char *output, int
     }
 }
 
-void ParallelSatCUDA(unsigned char *input, unsigned char *output, int rows, int cols, float set_sar){ 
+__host__ void ParallelSatCUDA(unsigned char *input, unsigned char *output, int rows, int cols, float set_sar){ 
 
     // Input and output data
     size_t dataSize = rows * cols * 3 * sizeof(unsigned char);

@@ -15,7 +15,7 @@ __global__ void brightnessKernel(const unsigned char *input, unsigned char *outp
     }
 }
 
-void ParallelBrightnessCUDA(unsigned char *input,unsigned char *output, int rows, int cols, int bright) {
+__host__ void ParallelBrightnessCUDA(unsigned char *input,unsigned char *output, int rows, int cols, int bright) {
 
     // Input and output data
     size_t dataSize = rows * cols * 3 * sizeof(unsigned char);

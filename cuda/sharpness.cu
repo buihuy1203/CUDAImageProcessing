@@ -38,7 +38,7 @@ __global__ void applysharpenKernel(const unsigned char *input,const unsigned cha
     }
 }
 
-void ParallelSharpCUDA(unsigned char *inputColor, unsigned char *inputGray, unsigned char *output, int rows, int cols, float sharp_var) {
+__host__ void ParallelSharpCUDA(unsigned char *inputColor, unsigned char *inputGray, unsigned char *output, int rows, int cols, float sharp_var) {
 
     // Input and output data
     size_t dataGray = rows * cols * sizeof(unsigned char);

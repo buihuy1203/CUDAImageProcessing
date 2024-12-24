@@ -25,7 +25,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{696AA35A-EB30-38B2-8CFD-76278C0D6BCE}</ProjectGuid>
+    <ProjectGuid>{FA98F281-4D5A-330E-9854-C8D102877B22}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -72,11 +72,11 @@
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-cd "E:\Bai Tap\Lap trinh song song\CUDAProcessing\build"
+cd C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build
 if %errorlevel% neq 0 goto :cmEnd
-E:
+C:
 if %errorlevel% neq 0 goto :cmEnd
-C:\Strawberry\c\bin\cpack.exe -C $(Configuration) --config ./CPackConfig.cmake
+"C:\Program Files\CMake\bin\cpack.exe" -C $(Configuration) --config ./CPackConfig.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -90,11 +90,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-cd "E:\Bai Tap\Lap trinh song song\CUDAProcessing\build"
+cd C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build
 if %errorlevel% neq 0 goto :cmEnd
-E:
+C:
 if %errorlevel% neq 0 goto :cmEnd
-C:\Strawberry\c\bin\cpack.exe -C $(Configuration) --config ./CPackConfig.cmake
+"C:\Program Files\CMake\bin\cpack.exe" -C $(Configuration) --config ./CPackConfig.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -108,11 +108,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-cd "E:\Bai Tap\Lap trinh song song\CUDAProcessing\build"
+cd C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build
 if %errorlevel% neq 0 goto :cmEnd
-E:
+C:
 if %errorlevel% neq 0 goto :cmEnd
-C:\Strawberry\c\bin\cpack.exe -C $(Configuration) --config ./CPackConfig.cmake
+"C:\Program Files\CMake\bin\cpack.exe" -C $(Configuration) --config ./CPackConfig.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -126,11 +126,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <PostBuildEvent>
       <Message></Message>
       <Command>setlocal
-cd "E:\Bai Tap\Lap trinh song song\CUDAProcessing\build"
+cd C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build
 if %errorlevel% neq 0 goto :cmEnd
-E:
+C:
 if %errorlevel% neq 0 goto :cmEnd
-C:\Strawberry\c\bin\cpack.exe -C $(Configuration) --config ./CPackConfig.cmake
+"C:\Program Files\CMake\bin\cpack.exe" -C $(Configuration) --config ./CPackConfig.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -141,7 +141,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\CMakeFiles\d83ca3f32747932f4c75e797224a86cc\PACKAGE_force.rule">
+    <CustomBuild Include="C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build\CMakeFiles\39d0b3564405ecc2d6b4346add369986\PACKAGE_force.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd .
@@ -153,9 +154,10 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\CMakeFiles\PACKAGE_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build\CMakeFiles\PACKAGE_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 cd .
@@ -167,9 +169,10 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\CMakeFiles\PACKAGE_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build\CMakeFiles\PACKAGE_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
 cd .
@@ -181,9 +184,10 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\CMakeFiles\PACKAGE_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build\CMakeFiles\PACKAGE_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
 cd .
@@ -195,20 +199,21 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\CMakeFiles\PACKAGE_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build\CMakeFiles\PACKAGE_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\ZERO_CHECK.vcxproj">
-      <Project>{D4C7EECF-16C2-3B15-B02B-7B3400DC649E}</Project>
+    <ProjectReference Include="C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build\ZERO_CHECK.vcxproj">
+      <Project>{25EA7B0F-D706-38FE-9A32-B439BE932529}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="E:\Bai Tap\Lap trinh song song\CUDAProcessing\build\ALL_BUILD.vcxproj">
-      <Project>{0382D8AD-F4F5-3001-9C58-8D5B1CB60680}</Project>
+    <ProjectReference Include="C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\build\ALL_BUILD.vcxproj">
+      <Project>{62EC7204-CCC3-3D18-859A-CF6D91801E3E}</Project>
       <Name>ALL_BUILD</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

@@ -1,9 +1,9 @@
-E:/Bai Tap/Lap trinh song song/CUDAProcessing/build/CMakeFiles/Experimental.dir
-E:/Bai Tap/Lap trinh song song/CUDAProcessing/build/CMakeFiles/Nightly.dir
-E:/Bai Tap/Lap trinh song song/CUDAProcessing/build/CMakeFiles/Continuous.dir
-E:/Bai Tap/Lap trinh song song/CUDAProcessing/build/CMakeFiles/NightlyMemoryCheck.dir
-E:/Bai Tap/Lap trinh song song/CUDAProcessing/build/CMakeFiles/CUDAProcessing.dir
-E:/Bai Tap/Lap trinh song song/CUDAProcessing/build/CMakeFiles/PACKAGE.dir
-E:/Bai Tap/Lap trinh song song/CUDAProcessing/build/CMakeFiles/RUN_TESTS.dir
-E:/Bai Tap/Lap trinh song song/CUDAProcessing/build/CMakeFiles/ALL_BUILD.dir
-E:/Bai Tap/Lap trinh song song/CUDAProcessing/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing/build/CMakeFiles/Experimental.dir
+C:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing/build/CMakeFiles/Nightly.dir
+C:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing/build/CMakeFiles/Continuous.dir
+C:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing/build/CMakeFiles/NightlyMemoryCheck.dir
+C:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing/build/CMakeFiles/CUDAProcessing.dir
+C:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing/build/CMakeFiles/PACKAGE.dir
+C:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Huy_MB/Documents/Code/ImageProcessing/CUDAProcessing/CUDAImageProcessing/build/CMakeFiles/ZERO_CHECK.dir

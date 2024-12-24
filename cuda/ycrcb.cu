@@ -21,7 +21,7 @@ __global__ void yCrCBKernel(const unsigned char *input, unsigned char *output, i
     }
 }
 
-void ParallelYCrCBCUDA(unsigned char *input, unsigned char *output, int rows, int cols) {
+__host__ void ParallelYCrCBCUDA(unsigned char *input, unsigned char *output, int rows, int cols) {
 
     // Input and output data
     size_t dataSize = rows * cols * 3 * sizeof(unsigned char);

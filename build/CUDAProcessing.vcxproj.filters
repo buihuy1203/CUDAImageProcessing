@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="E:\Bai Tap\Lap trinh song song\CUDAProcessing\main.cpp">
+    <ClCompile Include="C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -23,11 +23,11 @@
     </CudaCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\Bai Tap\Lap trinh song song\CUDAProcessing\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Huy_MB\Documents\Code\ImageProcessing\CUDAProcessing\CUDAImageProcessing\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{124810DC-B756-3CF0-A874-3EC480C08F0D}</UniqueIdentifier>
+      <UniqueIdentifier>{8C8DDDD2-FD88-3655-9873-FE8549E02A32}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
