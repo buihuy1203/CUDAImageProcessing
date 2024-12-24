@@ -1,3 +1,5 @@
+static float YCrCBTime = 0.0f;
+
 __global__ void yCrCBKernel(const unsigned char *input, unsigned char *output, int rows, int cols) {
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
@@ -31,6 +33,11 @@ __host__ void ParallelYCrCBCUDA(unsigned char *input, unsigned char *output, int
     cudaMalloc(&d_input, dataSize);
     cudaMalloc(&d_output, dataSize);
 
+    // Create Event
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
     // Copy input data to device
     cudaMemcpy(d_input, input, dataSize, cudaMemcpyHostToDevice);
 
@@ -39,11 +46,23 @@ __host__ void ParallelYCrCBCUDA(unsigned char *input, unsigned char *output, int
     dim3 gridSize((cols + blockSize.x - 1) / blockSize.x, 
                   (rows + blockSize.y - 1) / blockSize.y);
 
+    // Record start time
+    cudaEventRecord(start);
+
     // Launch kernel
     yCrCBKernel<<<gridSize, blockSize>>>(d_input, d_output, rows, cols);
 
+    // Record stop time
+    cudaEventRecord(stop);
+
     // Wait for GPU to finish
-    cudaDeviceSynchronize();
+    cudaEventSynchronize(stop);
+
+    // Calculate elapsed time
+    float milliseconds = 0;
+    cudaEventElapsedTime(&milliseconds, start, stop);
+
+    YCrCBTime += milliseconds;
 
     // Copy output data back to host
     cudaMemcpy(output, d_output, dataSize, cudaMemcpyDeviceToHost);
@@ -51,4 +70,10 @@ __host__ void ParallelYCrCBCUDA(unsigned char *input, unsigned char *output, int
     // Free device memory
     cudaFree(d_input);
     cudaFree(d_output);
+    cudaEventDestroy(start);
+    cudaEventDestroy(stop);
+}
+
+__host__ float getYCrCBTime() {
+    return YCrCBTime;
 }

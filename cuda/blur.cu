@@ -1,4 +1,6 @@
 #define M_PI 3.14159
+static float blurTime = 0.0f;
+
 static __device__ int clamp(int value, int low, int high) {
     return max(low, min(value, high));
 }
@@ -68,6 +70,12 @@ __host__ void ParallelBlurCUDA(unsigned char *input,unsigned char *output,int ro
     cudaMalloc(&d_output, dataSize);
     cudaMalloc(&d_kernel, 7 * 7 * sizeof(float));
 
+    // Create Event
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
+
     // Copy input data to device
     cudaMemcpy(d_input, input, dataSize, cudaMemcpyHostToDevice);
     cudaMemcpy(d_kernel, kernel1D, 7 * 7 * sizeof(float), cudaMemcpyHostToDevice);
@@ -77,11 +85,21 @@ __host__ void ParallelBlurCUDA(unsigned char *input,unsigned char *output,int ro
     dim3 gridSize((cols + blockSize.x - 1) / blockSize.x, 
                   (rows + blockSize.y - 1) / blockSize.y);
 
+    // Record start time
+    cudaEventRecord(start);              
+
     // Launch kernel
     blurKernel<<<gridSize, blockSize>>>(d_input, d_output, d_kernel, rows, cols, kernelSize);
 
-    // Wait for GPU to finish
-    cudaDeviceSynchronize();
+    // Record stop time
+    cudaEventRecord(stop);
+
+    // Synchronize
+    cudaEventSynchronize(stop);
+
+    // Calculate elapsed time
+    float milliseconds = 0;
+    cudaEventElapsedTime(&milliseconds, start, stop);
 
     // Copy output data back to host
     cudaMemcpy(output, d_output, dataSize, cudaMemcpyDeviceToHost);
@@ -92,4 +110,13 @@ __host__ void ParallelBlurCUDA(unsigned char *input,unsigned char *output,int ro
     cudaFree(d_kernel);
     delete[] kernel1D;
 
+    cudaEventDestroy(start);
+    cudaEventDestroy(stop);
+
+    blurTime += milliseconds;
+
+}
+
+__host__ float getBlurTime() {
+    return blurTime;
 }

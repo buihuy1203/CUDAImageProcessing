@@ -2,5 +2,5 @@
 #define YCRCB_H
 
 void ParallelYCrCBCUDA(unsigned char *input, unsigned char *output, int rows, int cols);
-
+float getYCrCBTime();
 #endif

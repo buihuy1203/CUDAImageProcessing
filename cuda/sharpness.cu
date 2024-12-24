@@ -1,3 +1,5 @@
+static float SharpTime = 0.0f;
+
 static __device__ int clamp(int value, int low, int high) {
     return fmaxf(low, fminf(value, high));
 }
@@ -45,6 +47,11 @@ __host__ void ParallelSharpCUDA(unsigned char *inputColor, unsigned char *inputG
     size_t dataSize = rows * cols * 3 * sizeof(unsigned char);
     unsigned char *d_inputData, *d_output, *d_inputColor, *d_result;
 
+    // Create Event
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
     // Allocate device memory
     cudaMalloc(&d_inputData, dataGray);
     cudaMalloc(&d_output, dataSize);
@@ -59,6 +66,9 @@ __host__ void ParallelSharpCUDA(unsigned char *inputColor, unsigned char *inputG
     dim3 gridSize((cols + blockSize.x - 1) / blockSize.x, 
                   (rows + blockSize.y - 1) / blockSize.y);
 
+    // Record start time
+    cudaEventRecord(start); 
+
     // Launch kernel
     sharpenKernel<<<gridSize, blockSize>>>(d_inputData, d_result, rows, cols);
     // Wait for GPU to finish
@@ -66,8 +76,17 @@ __host__ void ParallelSharpCUDA(unsigned char *inputColor, unsigned char *inputG
     
     applysharpenKernel<<<gridSize, blockSize>>>(d_inputColor, d_result, d_output, rows, cols, sharp_var);
 
+    // Record stop time
+    cudaEventRecord(stop);
+
     // Wait for GPU to finish
-    cudaDeviceSynchronize();
+    cudaEventSynchronize(stop);
+
+    // Calculate elapsed time
+    float milliseconds = 0;
+    cudaEventElapsedTime(&milliseconds, start, stop);
+
+    SharpTime += milliseconds;
 
     // Copy output data back to host
     cudaMemcpy(output, d_output, dataSize, cudaMemcpyDeviceToHost);
@@ -77,4 +96,11 @@ __host__ void ParallelSharpCUDA(unsigned char *inputColor, unsigned char *inputG
     cudaFree(d_output);
     cudaFree(d_result);
     cudaFree(d_inputColor);
+
+    cudaEventDestroy(start);
+    cudaEventDestroy(stop);
+}
+
+__host__ float getSharpTime() {
+    return SharpTime;
 }
